@@ -269,6 +269,19 @@ require("lazy").setup({
 		},
 	},
 
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      -- "ibhagwan/fzf-lua",              -- optional
+    },
+    config = true
+  },
+
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
 	-- This is often very useful to both group configuration, as well as handle
@@ -402,6 +415,9 @@ require("lazy").setup({
 						i = {
 							["<c-j>"] = require("telescope.actions").move_selection_next,
 							["<c-k>"] = require("telescope.actions").move_selection_previous,
+							["<c-q>"] = require("telescope.actions").send_selected_to_qflist,
+							["<c-l>"] = require("telescope.actions").send_selected_to_loclist,
+							["<c-a>"] = require("telescope.actions").toggle_all,
 						},
 					},
 				},
