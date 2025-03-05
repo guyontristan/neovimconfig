@@ -1075,5 +1075,8 @@ require("lazy").setup({
 -- MY LSP's
 require("lspconfig").clangd.setup({})
 
+-- Shortcut for Neogit
+vim.keymap.set("n", "<leader>g", ":Neogit<cr>", { desc = "Open Neo[G]it" })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
