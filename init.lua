@@ -178,20 +178,17 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+-- Set shortcuts for quickfixlist navigation.
+vim.keymap.set("n", "]q", ":cnext<cr>", { desc = "Move to next in quickfix list" })
+vim.keymap.set("n", "[q", ":cprevious<cr>", { desc = "Move to previous in quickfix list" })
+vim.keymap.set("n", "]Q", ":clast<cr>", { desc = "Move to last in quickfix list" })
+vim.keymap.set("n", "[Q", ":cfirst<cr>", { desc = "Move to first in quickfix list" })
 
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
--- vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
--- vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
--- vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
--- vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Set shortcuts for loclist navigation.
+vim.keymap.set("n", "]l", ":lnext<cr>", { desc = "Move to next in loclist list" })
+vim.keymap.set("n", "[l", ":lprevious<cr>", { desc = "Move to previous in loclist list" })
+vim.keymap.set("n", "]L", ":llast<cr>", { desc = "Move to last in loclist list" })
+vim.keymap.set("n", "[L", ":lfirst<cr>", { desc = "Move to first in loclist list" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
