@@ -190,6 +190,10 @@ vim.keymap.set("n", "[l", ":lprevious<cr>", { desc = "Move to previous in loclis
 vim.keymap.set("n", "]L", ":llast<cr>", { desc = "Move to last in loclist list" })
 vim.keymap.set("n", "[L", ":lfirst<cr>", { desc = "Move to first in loclist list" })
 
+-- Better shortcuts in insert mode
+vim.keymap.set("i", "<C-j>", "<C-n>", { desc = "Supersedes <C-n>" })
+vim.keymap.set("i", "<C-k>", "<C-p>", { desc = "Supersedes <C-n>" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
