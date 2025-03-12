@@ -1087,5 +1087,9 @@ require("lspconfig").clangd.setup({})
 -- Shortcut for Neogit
 vim.keymap.set("n", "<leader>g", ":Neogit<cr>", { desc = "Open Neo[G]it" })
 
+-- Highlighting current symbol (LSP)
+vim.keymap.set("n", "<leader>hh", ":lua=vim.lsp.buf.document_highlight()<cr>", { desc = "[H]ighlight [H]ere" })
+vim.keymap.set("n", "<leader>hc", ":lua=vim.lsp.buf.clear_references()<cr>", { desc = "[H]ighlight [H]ere" })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
