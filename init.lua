@@ -190,6 +190,12 @@ vim.keymap.set("n", "[l", ":lprevious<cr>", { desc = "Move to previous in loclis
 vim.keymap.set("n", "]L", ":llast<cr>", { desc = "Move to last in loclist list" })
 vim.keymap.set("n", "[L", ":lfirst<cr>", { desc = "Move to first in loclist list" })
 
+-- Set shortcuts for tab navigation.
+vim.keymap.set("n", "]t", ":tabnext<cr>", { desc = "Move to next tab" })
+vim.keymap.set("n", "[t", ":tabprevious<cr>", { desc = "Move to previous tab" })
+vim.keymap.set("n", "]T", ":tablast<cr>", { desc = "Move to last tab" })
+vim.keymap.set("n", "[T", ":tabfirst<cr>", { desc = "Move to first tab" })
+
 -- Better shortcuts in insert mode
 vim.keymap.set("i", "<C-j>", "<C-n>", { desc = "Supersedes <C-n>" })
 vim.keymap.set("i", "<C-k>", "<C-p>", { desc = "Supersedes <C-n>" })
@@ -451,6 +457,8 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
+			vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
@@ -1084,8 +1092,10 @@ require("lazy").setup({
 -- MY LSP's
 require("lspconfig").clangd.setup({})
 
--- Shortcut for Neogit
-vim.keymap.set("n", "<leader>g", ":Neogit<cr>", { desc = "Open Neo[G]it" })
+-- Shortcut for git
+vim.keymap.set("n", "<leader>go", ":Neogit<cr>", { desc = "Neo[G]it [O]pen" })
+vim.keymap.set("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "[Git] [D]iffview" })
+vim.keymap.set("n", "<leader>tc", ":tabclose<cr>", { desc = "[T]ab [C]lose" })
 
 -- Highlighting current symbol (LSP)
 vim.keymap.set("n", "<leader>hh", ":lua=vim.lsp.buf.document_highlight()<cr>", { desc = "[H]ighlight [H]ere" })
