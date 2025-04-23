@@ -291,7 +291,16 @@ require("lazy").setup({
 
 	{
 		"stevearc/oil.nvim",
-		config = true,
+		config = function()
+			require("oil").setup({
+				default_file_explorer = true,
+				columns = {
+					-- "size",
+				},
+				delete_to_trash = true,
+			})
+			vim.keymap.set("n", "<leader>oo", ":Oil --float<cr>", { desc = "[O]pen [O]il" })
+		end,
 	},
 
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
