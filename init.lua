@@ -494,6 +494,15 @@ require("lazy").setup({
 		end,
 	},
 
+	-- {
+	-- 	"ibhagwan/fzf-lua",
+	-- 	-- optional for icon support
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- 	-- or if using mini.icons/mini.nvim
+	-- 	-- dependencies = { "echasnovski/mini.icons" },
+	-- 	opts = {},
+	-- },
+
 	-- LSP Plugins
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
