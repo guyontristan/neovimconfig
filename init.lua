@@ -1119,5 +1119,9 @@ vim.keymap.set("n", "<leader>tc", ":tabclose<cr>", { desc = "[T]ab [C]lose" })
 vim.keymap.set("n", "<leader>hh", ":lua=vim.lsp.buf.document_highlight()<cr>", { desc = "[H]ighlight [H]ere" })
 vim.keymap.set("n", "<leader>hc", ":lua=vim.lsp.buf.clear_references()<cr>", { desc = "[H]ighlight [H]ere" })
 
+-- Shortcut for dual diff
+vim.keymap.set("n", "<leader>dd", ":diffthis<cr>w:diffthis<cr>w", { desc = "[D]ual [D]iff" })
+vim.keymap.set("n", "<leader>do", ":diffoff<cr>w:diffoff<cr>w", { desc = "Dual [D]iff [O]ff" })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
