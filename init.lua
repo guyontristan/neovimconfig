@@ -503,14 +503,14 @@ require("lazy").setup({
 		end,
 	},
 
-	-- {
-	-- 	"ibhagwan/fzf-lua",
-	-- 	-- optional for icon support
-	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	-- 	-- or if using mini.icons/mini.nvim
-	-- 	-- dependencies = { "echasnovski/mini.icons" },
-	-- 	opts = {},
-	-- },
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- or if using mini.icons/mini.nvim
+		-- dependencies = { "echasnovski/mini.icons" },
+		opts = {},
+	},
 
 	-- LSP Plugins
 	{
@@ -980,8 +980,13 @@ end
 
 vim.keymap.set("n", "<leader>tp", ":lua VimtexPDFToggle()<cr>", { desc = "[T]erm[P]df" })
 
--- Let's see what all the fuss is about
--- vim.keymap.set("i", "jk", "<Esc>", { noremap = true, desc = "Exit insert mode with jk" })
+vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>",
+  function() FzfLua.complete_path() end,
+  { silent = true, desc = "Fuzzy complete path" })
+
+vim.keymap.set({ "n", "v", "i" }, "<C-x><C-l>",
+  function() FzfLua.complete_line() end,
+  { silent = true, desc = "Fuzzy complete line" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
