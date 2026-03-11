@@ -460,46 +460,46 @@ require("lazy").setup({
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+			-- vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+			-- vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+			-- vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			-- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+			-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 			-- vim.keymap.set("n", "<leader>ss", function()
 			-- 	builtin.grep_string({ search = "" })
 			-- end, { desc = "[S][S]earch by fuzzy grep" })
-			vim.keymap.set("n", "<leader>sq", builtin.quickfix, { desc = "[S]earch [Q]uickfix list" })
-			vim.keymap.set("n", "<leader>sl", builtin.loclist, { desc = "[S]earch [L]ocation list" })
-			vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [J]ump list" })
-			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			-- vim.keymap.set("n", "<leader>sq", builtin.quickfix, { desc = "[S]earch [Q]uickfix list" })
+			-- vim.keymap.set("n", "<leader>sl", builtin.loclist, { desc = "[S]earch [L]ocation list" })
+			-- vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [J]ump list" })
+			-- vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+			-- vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+			-- vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			-- vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			--
+			-- vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
 
-			vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
+			-- -- Slightly advanced example of overriding default behavior and theme
+			-- vim.keymap.set("n", "<leader>/", function()
+			-- 	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
+			-- 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+			-- 		winblend = 10,
+			-- 		previewer = false,
+			-- 	}))
+			-- end, { desc = "[/] Fuzzily search in current buffer" })
 
-			-- Slightly advanced example of overriding default behavior and theme
-			vim.keymap.set("n", "<leader>/", function()
-				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
-				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-					winblend = 10,
-					previewer = false,
-				}))
-			end, { desc = "[/] Fuzzily search in current buffer" })
+			-- -- It's also possible to pass additional configuration options.
+			-- --  See `:help telescope.builtin.live_grep()` for information about particular keys
+			-- vim.keymap.set("n", "<leader>s/", function()
+			-- 	builtin.live_grep({
+			-- 		grep_open_files = true,
+			-- 		prompt_title = "Live Grep in Open Files",
+			-- 	})
+			-- end, { desc = "[S]earch [/] in Open Files" })
 
-			-- It's also possible to pass additional configuration options.
-			--  See `:help telescope.builtin.live_grep()` for information about particular keys
-			vim.keymap.set("n", "<leader>s/", function()
-				builtin.live_grep({
-					grep_open_files = true,
-					prompt_title = "Live Grep in Open Files",
-				})
-			end, { desc = "[S]earch [/] in Open Files" })
-
-			-- Shortcut for searching your Neovim configuration files
-			vim.keymap.set("n", "<leader>sn", function()
-				builtin.find_files({ cwd = vim.fn.stdpath("config") })
-			end, { desc = "[S]earch [N]eovim files" })
+			-- -- Shortcut for searching your Neovim configuration files
+			-- vim.keymap.set("n", "<leader>sn", function()
+			-- 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
+			-- end, { desc = "[S]earch [N]eovim files" })
 		end,
 	},
 
@@ -510,6 +510,19 @@ require("lazy").setup({
 		-- or if using mini.icons/mini.nvim
 		-- dependencies = { "echasnovski/mini.icons" },
 		opts = {},
+    config = function()
+      require("fzf-lua").setup({
+        vim.keymap.set({ "n" }, "<leader>ss", ":FzfLua<cr>", { desc = "Fuzzy [S][S]earch menu" }),
+        vim.keymap.set("n", "<leader>sr", ":FzfLua resume<cr>", { desc = "[S]earch [R]esume" }),
+        vim.keymap.set("n", "<leader>sf", ":FzfLua files<cr>", { desc = "[S]earch [F]iles" }),
+        vim.keymap.set({ "n" }, "<leader>s~", ":FzfLua files cwd='~/'<cr>", { desc = "Fuzzy [S]earch File from [~]/" }),
+        vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<cr>", { desc = "[S]earch by live [G]rep" }),
+        vim.keymap.set({ "i" }, "<C-x><C-l>", function() FzfLua.complete_line() end,
+          { silent = true, desc = "Fuzzy complete line" }),
+        vim.keymap.set({ "i" }, "<C-x><C-f>", function() FzfLua.complete_path() end,
+          { silent = true, desc = "Fuzzy complete path" }),
+        })
+    end
 	},
 
 	-- LSP Plugins
@@ -979,23 +992,6 @@ function VimtexPDFToggle()
 end
 
 vim.keymap.set("n", "<leader>tp", ":lua VimtexPDFToggle()<cr>", { desc = "[T]erm[P]df" })
-
-vim.keymap.set({ "i" }, "<C-x><C-f>",
-  function() FzfLua.complete_path() end,
-  -- ":FzfLua complete_path<cr>", -- this takes/changes the whole line for some reason
-  { silent = true, desc = "Fuzzy complete path" })
-
-vim.keymap.set({ "i" }, "<C-x><C-l>",
-  function() FzfLua.complete_line() end,
-  { silent = true, desc = "Fuzzy complete line" })
-
-vim.keymap.set({ "n"}, "<leader>s~",
-  ":FzfLua files cwd='~/'<cr>",
-  { desc = "Fuzzy [S]earch File from [~]/" })
-
-vim.keymap.set({ "n"}, "<leader>ss",
-  ":FzfLua<cr>",
-  { desc = "Fuzzy [S][S]earch menu" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
