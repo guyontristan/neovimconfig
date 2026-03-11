@@ -167,8 +167,8 @@ vim.opt.scrolloff = 10
 --  See `:help hlsearch`
 -- vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+-- -- Diagnostic keymaps
+-- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -366,13 +366,14 @@ require("lazy").setup({
 
 			-- Document existing key chains
 			spec = {
-				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>d", group = "[D]ocument" },
-				{ "<leader>r", group = "[R]ename" },
+				-- { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+				-- { "<leader>d", group = "[D]ocument" },
+				-- { "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]oggle" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				-- { "<leader>w", group = "[W]orkspace" },
+				-- { "<leader>t", group = "[T]oggle" },
+				-- { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
 			},
 		},
 	},
@@ -462,12 +463,11 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>sg", function()
+			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+			vim.keymap.set("n", "<leader>ss", function()
 				builtin.grep_string({ search = "" })
-			end, { desc = "[S]earch by fuzzy [G]rep" })
+			end, { desc = "[S][S]earch by fuzzy grep" })
 			vim.keymap.set("n", "<leader>sq", builtin.quickfix, { desc = "[S]earch [Q]uickfix list" })
 			vim.keymap.set("n", "<leader>sl", builtin.loclist, { desc = "[S]earch [L]ocation list" })
 			vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [J]ump list" })
@@ -597,7 +597,7 @@ require("lazy").setup({
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+					map("gD", require("telescope.builtin").lsp_type_definitions, "[G]oto Type [D]efinition")
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
@@ -802,16 +802,16 @@ require("lazy").setup({
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
-		keys = {
-			{
-				"<leader>f",
-				function()
-					require("conform").format({ async = true, lsp_format = "fallback" })
-				end,
-				mode = "",
-				desc = "[F]ormat buffer",
-			},
-		},
+		-- keys = {
+		-- 	{
+		-- 		"<leader>f",
+		-- 		function()
+		-- 			require("conform").format({ async = true, lsp_format = "fallback" })
+		-- 		end,
+		-- 		mode = "",
+		-- 		desc = "[F]ormat buffer",
+		-- 	},
+		-- },
 		opts = {
 			notify_on_error = false,
 			format_on_save = function(bufnr)
