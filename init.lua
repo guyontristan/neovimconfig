@@ -283,8 +283,8 @@ require("lazy").setup({
 			"sindrets/diffview.nvim", -- optional - Diff integration
 
 			-- Only one of these is needed, not both.
-			"nvim-telescope/telescope.nvim", -- optional
-			-- "ibhagwan/fzf-lua",              -- optional
+			-- "nvim-telescope/telescope.nvim", -- optional
+			"ibhagwan/fzf-lua",              -- optional
 		},
 		config = true,
 	},
@@ -528,7 +528,7 @@ require("lazy").setup({
         vim.keymap.set("n", "<leader>sr", ":FzfLua resume<cr>", { desc = "[S]earch [R]esume" }),
         vim.keymap.set("n", "<leader>sf", ":FzfLua files<cr>", { desc = "[S]earch [F]iles" }),
         vim.keymap.set({ "n" }, "<leader>s~", ":FzfLua files cwd='~/'<cr>", { desc = "Fuzzy [S]earch File from [~]/" }),
-        vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<cr>", { desc = "[S]earch by live [G]rep" }),
+        vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<cr>", { desc = "[S]earch by live [G]rep" }),
         vim.keymap.set({ "i" }, "<C-x><C-l>", function() FzfLua.complete_line() end,
           { silent = true, desc = "Fuzzy complete line" }),
         vim.keymap.set({ "i" }, "<C-x><C-f>", function() FzfLua.complete_path() end,
