@@ -465,9 +465,9 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>ss", function()
-				builtin.grep_string({ search = "" })
-			end, { desc = "[S][S]earch by fuzzy grep" })
+			-- vim.keymap.set("n", "<leader>ss", function()
+			-- 	builtin.grep_string({ search = "" })
+			-- end, { desc = "[S][S]earch by fuzzy grep" })
 			vim.keymap.set("n", "<leader>sq", builtin.quickfix, { desc = "[S]earch [Q]uickfix list" })
 			vim.keymap.set("n", "<leader>sl", builtin.loclist, { desc = "[S]earch [L]ocation list" })
 			vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [J]ump list" })
@@ -980,13 +980,22 @@ end
 
 vim.keymap.set("n", "<leader>tp", ":lua VimtexPDFToggle()<cr>", { desc = "[T]erm[P]df" })
 
-vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>",
+vim.keymap.set({ "i" }, "<C-x><C-f>",
   function() FzfLua.complete_path() end,
+  -- ":FzfLua complete_path<cr>", -- this takes/changes the whole line for some reason
   { silent = true, desc = "Fuzzy complete path" })
 
-vim.keymap.set({ "n", "v", "i" }, "<C-x><C-l>",
+vim.keymap.set({ "i" }, "<C-x><C-l>",
   function() FzfLua.complete_line() end,
   { silent = true, desc = "Fuzzy complete line" })
+
+vim.keymap.set({ "n"}, "<leader>s~",
+  ":FzfLua files cwd='~/'<cr>",
+  { desc = "Fuzzy [S]earch File from [~]/" })
+
+vim.keymap.set({ "n"}, "<leader>ss",
+  ":FzfLua<cr>",
+  { desc = "Fuzzy [S][S]earch menu" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
