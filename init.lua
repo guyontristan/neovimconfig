@@ -216,7 +216,8 @@ require("lazy").setup({
 			},
 		},
     init = function()
-        vim.keymap.set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<cr>", { desc = "[G]itsigns [S]tage hunk" })
+        vim.keymap.set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<cr>", { desc = "[H]unk [S]tage" })
+        vim.keymap.set({ "n" }, "<leader>hp", ":Gitsigns preview_hunk<cr>", { desc = "[H]unk [P]review" })
         vim.keymap.set({ "n", "v" }, "<leader>gg", ":Gitsigns<cr>", { desc = "[G][G]itsigns menu" })
         vim.keymap.set({ "n", "v" }, "]h", ":Gitsigns next_hunk<cr>", { desc = "Next git hunk" })
         vim.keymap.set({ "n", "v" }, "[h", ":Gitsigns prev_hunk<cr>", { desc = "Previous git hunk" })
