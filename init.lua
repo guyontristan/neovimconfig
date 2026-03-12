@@ -477,6 +477,8 @@ require("lazy").setup({
         vim.keymap.set("n", "<leader>sf", ":FzfLua files<cr>", { desc = "[S]earch [F]iles" }),
         vim.keymap.set({ "n" }, "<leader>s~", ":FzfLua files cwd='~/'<cr>", { desc = "Fuzzy [S]earch File from [~]/" }),
         vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<cr>", { desc = "[S]earch by live [G]rep" }),
+        vim.keymap.set("n", "<leader>ds", ":FzfLua lsp_document_symbols<cr>", { desc = "[D]ocument [S]ymbols" }),
+        vim.keymap.set("n", "<leader>ws", ":FzfLua lsp_workspace_symbols<cr>", { desc = "[W]orkspace [S]ymbols" }),
         vim.keymap.set({ "i" }, "<C-x><C-l>", function() FzfLua.complete_line() end,
           { silent = true, desc = "Fuzzy complete line" }),
         vim.keymap.set({ "i" }, "<C-x><C-f>", function() FzfLua.complete_path() end,
@@ -571,18 +573,6 @@ require("lazy").setup({
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
 					map("gD", require("telescope.builtin").lsp_type_definitions, "[G]oto Type [D]efinition")
-
-					-- Fuzzy find all the symbols in your current document.
-					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-
-					-- Fuzzy find all the symbols in your current workspace.
-					--  Similar to document symbols, except searches over your entire project.
-					map(
-						"<leader>ws",
-						require("telescope.builtin").lsp_dynamic_workspace_symbols,
-						"[W]orkspace [S]ymbols"
-					)
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
