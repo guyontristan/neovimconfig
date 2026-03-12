@@ -531,6 +531,7 @@ require("lazy").setup({
     config = function()
       require("fzf-lua").setup({
         vim.keymap.set({ "n" }, "<leader>ss", ":FzfLua<cr>", { desc = "Fuzzy [S][S]earch menu" }),
+        vim.keymap.set("n", "<leader>sh", ":FzfLua helptags<cr>", { desc = "[S]earch [H]elptags" }),
         vim.keymap.set("n", "<leader>sr", ":FzfLua resume<cr>", { desc = "[S]earch [R]esume" }),
         vim.keymap.set("n", "<leader>sf", ":FzfLua files<cr>", { desc = "[S]earch [F]iles" }),
         vim.keymap.set({ "n" }, "<leader>s~", ":FzfLua files cwd='~/'<cr>", { desc = "Fuzzy [S]earch File from [~]/" }),
