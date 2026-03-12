@@ -983,6 +983,16 @@ require("lazy").setup({
 -- MY LSP's
 require("lspconfig").clangd.setup({})
 
+require("fzf-lua").setup({
+  keymap = {
+    builtin = {
+      ["<M-p>"] = "toggle-preview",
+      ["<M-u>"] = "preview-page-up",
+      ["<M-d>"] = "preview-page-down",
+    },
+  }
+})
+
 -- Shortcut for git
 vim.keymap.set("n", "<leader>go", ":Neogit<cr>", { desc = "Neo[G]it [O]pen" })
 vim.keymap.set("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "[Git] [D]iffview" })
