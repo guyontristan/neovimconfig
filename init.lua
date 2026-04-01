@@ -955,5 +955,8 @@ end
 
 vim.keymap.set("n", "<leader>tp", ":lua VimtexPDFToggle()<cr>", { desc = "[T]erm[P]df" })
 
+-- Remap (for *any*where) ctrl+space as esc
+vim.keymap.set({"n", "i", "v", "x", "s", "c", "t"}, "<C-Space>", "")
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
