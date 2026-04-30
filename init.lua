@@ -176,6 +176,10 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  To update plugins you can run
 --    :Lazy update
+
+-- -- IN CASE OF TREE-SITTER PROBLEMS
+-- vim.env.PATH = "~/tree-sitter/target/release:" .. vim.env.PATH
+
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
