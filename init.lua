@@ -185,6 +185,17 @@ require("lazy").setup({
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
 	-- keys can be used to configure plugin behavior/loading/etc.
+
+  -- {"folke/snacks.nvim",
+  --   priority=1000,
+  --   lazy=false,
+  --   ---@type snacks.Config
+  --   force = true,
+  --   opts = {
+  --     image = {enabled = true, backend="kitty", magick={cmd="convert"}},
+  --   },
+  -- },
+
 	--
 	-- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
 	--
@@ -263,6 +274,7 @@ require("lazy").setup({
 			-- vim.cmd("filetype plugin indent on")
 			-- vim.cmd("syntax enable")
 			vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_syntax_enabled = 0 -- use tree-sitter
 		end,
 	},
 
@@ -476,7 +488,11 @@ require("lazy").setup({
         vim.keymap.set("n", "<leader>sh", ":FzfLua helptags<cr>", { desc = "[S]earch [H]elptags" }),
         vim.keymap.set("n", "<leader>sr", ":FzfLua resume<cr>", { desc = "[S]earch [R]esume" }),
         vim.keymap.set("n", "<leader>sf", ":FzfLua files<cr>", { desc = "[S]earch [F]iles" }),
-        vim.keymap.set({ "n" }, "<leader>s~", ":FzfLua files cwd='~/'<cr>", { desc = "Fuzzy [S]earch File from [~]/" }),
+        vim.keymap.set("n", "<leader>sb", ":FzfLua buffers<cr>", { desc = "[S]earch [B]uffers" }),
+        vim.keymap.set("n", "<leader>s/", ":FzfLua grep_curbuf<cr>", { desc = "[S]earch [/] current buffer" }),
+        vim.keymap.set("n", "<leader>sc", ":FzfLua changes<cr>", { desc = "[S]earch [C]hanges" }),
+        vim.keymap.set("n", "<leader>sj", ":FzfLua jumps<cr>", { desc = "[S]earch [J]umps" }),
+        vim.keymap.set({ "n" }, "<leader>sa", ":FzfLua files cwd='~/'<cr>", { desc = "[S]earch File from [A]nywhere in home" }),
         vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<cr>", { desc = "[S]earch by live [G]rep" }),
         vim.keymap.set("n", "<leader>ds", ":FzfLua lsp_document_symbols<cr>", { desc = "[D]ocument [S]ymbols" }),
         vim.keymap.set("n", "<leader>ws", ":FzfLua lsp_workspace_symbols<cr>", { desc = "[W]orkspace [S]ymbols" }),
@@ -843,7 +859,7 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
-				-- "latex",
+				"latex",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -863,6 +879,24 @@ require("lazy").setup({
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
+
+  {
+      url = "https://codeberg.org/andyg/leap.nvim",
+  }
+
+  -- { -- Easier window navigation between neovim and the kitty terminal emulator.
+  --   "knubie/vim-kitty-navigator",
+  --   build = "cp ./*.py ~/.config/kitty/",
+  --   -- config = function()
+  --   --   require("vim-kitty-navigator").setup(
+  --   --     {
+  --   -- --   --   vim.keymap.set({ "n", "i" }, "<M-h>", ":KittyNavigateLeft<cr>", { desc = "Navigate left" }),
+  --   -- --   --   vim.keymap.set({ "n", "i" }, "<M-l>", ":KittyNavigateRight<cr>", { desc = "Navigate right" }),
+  --   -- --   --   vim.keymap.set({ "n", "i" }, "<M-l>", ":KittyNavigateRight<cr>", { desc = "Navigate right" }),
+  --   --     })
+  --   -- --   -- vim.g.kitty_navigator_no_mappings=1
+  --   -- end
+  -- },
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
