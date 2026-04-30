@@ -819,12 +819,12 @@ require("lazy").setup({
 			--  - ci'  - [C]hange [I]nside [']quote
 			require("mini.ai").setup({ n_lines = 500 })
 
-			-- Add/delete/replace surroundings (brackets, quotes, etc.)
-			--
-			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-			-- - sd'   - [S]urround [D]elete [']quotes
-			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			-- -- Add/delete/replace surroundings (brackets, quotes, etc.)
+			-- --
+			-- -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+			-- -- - sd'   - [S]urround [D]elete [']quotes
+			-- -- - sr)'  - [S]urround [R]eplace [)] [']
+			-- require("mini.surround").setup()
 
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
@@ -995,6 +995,9 @@ vim.keymap.set("n", "<leader>tp", ":lua VimtexPDFToggle()<cr>", { desc = "[T]erm
 
 -- Remap (for *any*where) ctrl+space as esc
 vim.keymap.set({"n", "i", "v", "x", "s", "c", "t"}, "<C-Space>", "")
+
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>f', '<Plug>(leap)', { desc = "[F]ancy leap" })
+-- vim.keymap.set('n',               '<S-Tab>', '<Plug>(leap-from-window)')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
