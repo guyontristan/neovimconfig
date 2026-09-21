@@ -502,8 +502,8 @@ require("lazy").setup({
         vim.keymap.set("n", "<leader>ws", ":FzfLua lsp_workspace_symbols<cr>", { desc = "[W]orkspace [S]ymbols" }),
         vim.keymap.set({ "i" }, "<C-x><C-l>", function() FzfLua.complete_line() end,
           { silent = true, desc = "Fuzzy complete line" }),
-        vim.keymap.set({ "i" }, "<C-x><C-f>", function() FzfLua.complete_path() end,
-          { silent = true, desc = "Fuzzy complete path" }),
+        vim.keymap.set({ "i" }, "<C-x><C-f>", function() FzfLua.files({complete=true}) end,
+          { silent = true, desc = "Fuzzy enter path of file" }),
         })
     end
 	},
