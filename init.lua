@@ -999,5 +999,7 @@ vim.keymap.set({"n", "i", "v", "x", "s", "c", "t"}, "<C-Space>", "")
 vim.keymap.set({ 'n', 'x', 'o' }, '<leader>f', '<Plug>(leap)', { desc = "[F]ancy leap" })
 -- vim.keymap.set('n',               '<S-Tab>', '<Plug>(leap-from-window)')
 
+vim.opt.exrc = true
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
