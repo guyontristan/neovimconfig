@@ -179,6 +179,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- -- IN CASE OF TREE-SITTER PROBLEMS
 -- vim.env.PATH = "~/tree-sitter/target/release:" .. vim.env.PATH
+-- FIX: In fact, find the tree-sitter binary tree-sitter/target/release/tree-sitter and copy it in ~/.local/bin (and add this to path)
 
 --
 -- NOTE: Here is where you install your plugins.
