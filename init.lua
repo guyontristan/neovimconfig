@@ -887,6 +887,10 @@ require("lazy").setup({
 
   {
       url = "https://codeberg.org/andyg/leap.nvim",
+      opts = {
+        safe_labels = {}, -- always require the third key press
+        -- label_position = "left",
+      },
   }
 
   -- { -- Easier window navigation between neovim and the kitty terminal emulator.
@@ -999,6 +1003,18 @@ vim.keymap.set({"n", "i", "v", "x", "s", "c", "t"}, "<C-Space>", "")
 
 vim.keymap.set({ 'n', 'x', 'o' }, '<leader>f', '<Plug>(leap)', { desc = "[F]ancy leap" })
 -- vim.keymap.set('n',               '<S-Tab>', '<Plug>(leap-from-window)')
+
+-- IN LEAP.NVIM: show the labels at the beginning of the match,
+-- rather than after (from the official documentation).
+-- `on_beacons` hooks into `beacons.light_up_beacons`, the function
+-- responsible for displaying stuff.
+require('leap').opts.on_beacons = function(targets, _, _)
+  for _, t in ipairs(targets) do
+    -- Overwrite the `offset` value in all beacons.
+    -- target.beacon looks like: { <offset>, <extmark_opts> }
+    if t.label and t.beacon then t.beacon[1] = 0 end
+  end
+end
 
 vim.opt.exrc = true
 
